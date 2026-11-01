@@ -1,0 +1,197 @@
+/* The CPFG mark's world — ivory ground with black accents (banner, buttons, selections) carrying
+   ivory type, a high-contrast serif for headlines and wide-tracked caps for labels; one guided path
+   with the ticket riding alongside. Always light, regardless of the visitor's system theme. */
+:root {
+  --paper: #f5efe4; --surface: #fffcf6; --raise: #fbf6ec; --ink: #1c1c1e; --muted: #6e665a; --line: #e2d7c3;
+  --accent: #1c1c1e; --accent-soft: #efe4d0; --on-accent: #f5efe4; --alert: #b0532e;
+  --champagne: #e8d2ab;
+  --radius: 16px; --radius-sm: 10px;
+  --display: "Cormorant Garamond", "Gowun Batang", Georgia, serif;
+  --body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --caps: "Jost", "IBM Plex Sans KR", system-ui, sans-serif;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box }
+html { scroll-padding-top: env(safe-area-inset-top, 0px) }
+body {
+  margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.65;
+  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+img { max-width: 100% }
+[hidden] { display: none !important }
+.wrap { max-width: 1080px; margin: 0 auto }
+button { font: inherit; color: inherit }
+:focus-visible { outline: 1px solid var(--accent); outline-offset: 3px }
+
+/* construction notice */
+.pop-cons { margin: 0 0 16px; padding: 12px 14px; border: 1px solid var(--accent); background: var(--accent-soft); font-size: 13.5px; display: flex; flex-direction: column; gap: 4px }
+.pop-cons b { color: var(--accent); font-family: var(--caps); font-weight: 500; letter-spacing: .2em; text-transform: uppercase; font-size: 11px }
+:lang(ko) .pop-cons b { font-family: var(--body); letter-spacing: .06em; font-size: 14px; text-transform: none }
+.construction {
+  background: var(--accent); color: var(--on-accent); font-size: 13px; text-align: center; padding-block: 10px;
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.construction b { color: var(--champagne); font-family: var(--caps); font-weight: 500; letter-spacing: .24em; text-transform: uppercase; font-size: 11px; margin-right: 10px; white-space: nowrap }
+:lang(ko) .construction b { font-family: var(--body); letter-spacing: .08em; font-size: 13px }
+
+/* header + mark — a full-bleed black bar under the banner, ivory type, champagne mark */
+.topbar {
+  background: var(--accent); color: var(--on-accent); border-top: 1px solid #2e2d2c;
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.topbar header.top { border-bottom: none }
+.topbar .brand { color: var(--champagne) }
+.topbar .lang button { border-color: #3a3936; color: #b9b2a3 }
+.topbar .lang button[aria-pressed="true"] { border-color: var(--champagne); color: var(--champagne) }
+header.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 22px; border-bottom: 1px solid var(--line) }
+.brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--accent) }
+.rings { width: 46px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.4 }
+.word { display: flex; flex-direction: column; line-height: 1 }
+.word b { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; font-size: 28px; letter-spacing: .04em }
+.word small { font-family: var(--caps); font-weight: 400; font-size: 9.5px; letter-spacing: .42em; margin-top: 5px; padding-left: 2px }
+.lang { display: flex; gap: 2px; font-family: var(--caps); font-size: 12px; letter-spacing: .12em }
+.lang button { border: 1px solid var(--line); background: none; padding: 5px 12px; cursor: pointer; color: var(--muted) }
+.lang button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent) }
+
+.sample { margin: 16px 0 0; font-size: 12.5px; color: var(--muted); border-left: 1px solid var(--accent); padding: 2px 0 2px 12px }
+
+/* step rail */
+.rail { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px }
+.rail li { border-top: 1px solid var(--line); padding-top: 10px; font-size: 13px; color: var(--muted) }
+.rail li small { display: block; font-family: var(--caps); font-size: 10px; letter-spacing: .3em; margin-bottom: 2px }
+.rail li.done { border-color: var(--accent); color: var(--ink) }
+.rail li.now { border-top: 2px solid var(--accent); color: var(--accent) }
+@media (max-width: 560px) { .rail { gap: 6px } .rail li small { letter-spacing: .12em } .rail li span { font-size: 11.5px; line-height: 1.35; display: block } }
+
+.grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; align-items: start; padding-block: 40px 72px }
+@media (max-width: 860px) { .grid { grid-template-columns: minmax(0, 1fr) } }
+
+h1 { font-family: var(--display); font-weight: 500; font-size: clamp(30px, 4.6vw, 44px); line-height: 1.2; margin: 0 0 12px; text-wrap: balance; letter-spacing: -.005em }
+:lang(ko) h1 { font-family: "Gowun Batang", var(--display); font-weight: 400; font-size: clamp(26px, 3.8vw, 36px); line-height: 1.35 }
+.lede { color: var(--muted); max-width: 58ch; margin: 0 0 26px }
+.label { font-family: var(--caps); font-size: 11px; font-weight: 400; letter-spacing: .3em; text-transform: uppercase; color: var(--accent); margin: 28px 0 10px }
+.label.first { margin-top: 0 }
+:lang(ko) .label { letter-spacing: .14em; font-family: var(--body); font-weight: 500 }
+
+.trust { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0 0 8px; padding: 0; list-style: none; font-size: 13px; color: var(--muted) }
+.trust li { display: flex; gap: 6px; align-items: baseline }
+.trust li::before { content: ""; width: 6px; height: 6px; border: 1px solid var(--accent); border-radius: 50%; flex: none; transform: translateY(-1px) }
+.trust b { color: var(--ink); font-weight: 500 }
+
+/* option cards */
+.options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px }
+@media (max-width: 560px) { .options { grid-template-columns: minmax(0, 1fr) } }
+.opt { display: flex; flex-direction: column; gap: 6px; text-align: left; background: var(--surface); border: 1px solid var(--line); padding: 18px 20px; cursor: pointer; transition: border-color .2s, background .2s; position: relative }
+.opt:hover { border-color: var(--accent) }
+.opt[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft) }
+.opt[aria-pressed="true"]::after { content: ""; position: absolute; top: 16px; right: 16px; width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--accent); box-shadow: inset 0 0 0 3px var(--accent-soft), inset 0 0 0 7px var(--accent) }
+.opt .name { font-weight: 500; font-size: 17px; padding-right: 24px }
+.opt .meta { font-size: 13px; color: var(--muted) }
+.opt .tag { font-family: var(--caps); font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--accent) }
+.opt .price { font-family: var(--display); font-size: 19px; font-variant-numeric: tabular-nums lining-nums; margin-top: auto; padding-top: 10px; color: var(--accent); border-top: 1px solid var(--line) }
+:lang(ko) .opt .price { font-family: var(--body); font-size: 14px }
+.opt ul { margin: 4px 0 0; padding-left: 16px; font-size: 13px; color: var(--muted) }
+
+/* insurer cards + count */
+.label-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px }
+.label-row .count { font-family: var(--caps); font-size: 11px; letter-spacing: .14em; color: var(--muted) }
+.opt.insurer .short { font-family: var(--display); font-weight: 600; font-size: 30px; line-height: 1.1; letter-spacing: .01em }
+.opt.insurer .name { font-size: 14px; color: var(--muted); font-weight: 400 }
+.opt.insurer .go { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13px; font-weight: 500 }
+.opt.insurer:hover .go { color: var(--accent) }
+
+/* company ID step */
+.chosen { display: inline-flex; align-items: baseline; gap: 10px; border: 1px solid var(--line); background: var(--surface); padding: 8px 14px; margin-bottom: 22px; font-size: 13px }
+.chosen .k { color: var(--muted) }
+.chosen b { font-weight: 600 }
+.link { background: none; border: none; padding: 0; cursor: pointer; color: var(--muted); text-decoration: underline; text-underline-offset: 3px }
+.link:hover { color: var(--accent) }
+.company-form { max-width: 440px }
+.company-form input { font-size: 17px; letter-spacing: .06em; text-transform: uppercase }
+.company-form input::placeholder { text-transform: none; letter-spacing: 0 }
+.btn.block { width: 100%; margin-top: 6px }
+.help { margin-top: 28px; font-size: 13px; color: var(--muted) }
+
+/* dates */
+.dates { display: flex; flex-wrap: wrap; gap: 8px }
+.date { border: 1px solid var(--line); background: var(--surface); padding: 8px 12px; cursor: pointer; text-align: center; min-width: 72px }
+.date small { display: block; font-family: var(--caps); font-size: 10.5px; letter-spacing: .14em; color: var(--muted) }
+.date b { font-family: var(--display); font-weight: 500; font-size: 20px; font-variant-numeric: tabular-nums lining-nums }
+.date[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--accent) }
+.date:disabled { opacity: .35; cursor: not-allowed; text-decoration: line-through }
+
+/* form */
+form .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px }
+@media (max-width: 560px) { form .row { grid-template-columns: minmax(0, 1fr) } }
+.field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; min-width: 0 }
+.field label { font-size: 13px; font-weight: 500 }
+.field input, .field select, .field textarea { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 10px 12px; width: 100% }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); outline: none }
+.hint { font-size: 12px; color: var(--muted) }
+.err { font-size: 13px; color: var(--alert) }
+.check { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--muted); margin: 10px 0 }
+.check input { accent-color: var(--accent); margin-top: 4px }
+
+.nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 32px }
+.btn { border: 1px solid transparent; padding: 13px 26px; font-weight: 500; cursor: pointer; letter-spacing: .04em }
+.btn.primary { background: var(--accent); color: var(--on-accent) }
+.btn.primary:disabled { opacity: .3; cursor: not-allowed }
+.btn.ghost { background: none; border-color: var(--line); color: var(--muted) }
+.btn.ghost:hover { border-color: var(--accent); color: var(--accent) }
+
+/* ticket */
+.ticket { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 20px); background: var(--surface); border: 1px solid var(--line) }
+.ticket .head { padding: 18px 20px 14px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); color: var(--accent) }
+.ticket .head b { font-family: var(--display); font-weight: 500; font-size: 20px }
+:lang(ko) .ticket .head b { font-family: "Gowun Batang", serif; font-size: 17px }
+.ticket .head span { font-family: var(--caps); font-size: 10.5px; letter-spacing: .24em }
+.ticket dl { margin: 0; padding: 16px 20px; display: grid; gap: 12px }
+.ticket dt { font-family: var(--caps); font-size: 10px; letter-spacing: .28em; color: var(--muted) }
+.ticket dd { margin: 2px 0 0; font-weight: 500 }
+.ticket dd.empty { color: var(--muted); font-weight: 400; opacity: .7 }
+.perf { position: relative; height: 0; border-top: 1px dashed var(--line); margin-inline: 12px }
+.perf::before, .perf::after { content: ""; position: absolute; top: -9px; width: 16px; height: 16px; border-radius: 50%; background: var(--paper); border: 1px solid var(--line) }
+.perf::before { left: -21px }
+.perf::after { right: -21px }
+.tz { padding: 16px 20px 18px; font-size: 12.5px; font-variant-numeric: tabular-nums; display: grid; gap: 6px }
+.tz div { display: flex; justify-content: space-between; gap: 10px }
+.tz .k { color: var(--muted) }
+
+/* done */
+.done-box { border: 1px solid var(--accent); padding: 28px; background: var(--surface) }
+.done-box h1 { font-size: 28px }
+.done-box ol { padding-left: 20px; margin: 12px 0 0 }
+.done-box li { margin-bottom: 6px }
+.ref { font-family: var(--display); font-size: 28px; letter-spacing: .1em; color: var(--accent); margin: 0 0 6px }
+
+footer { border-top: 1px solid var(--line); padding-block: 26px 44px; font-size: 12.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between }
+
+/* notice popup */
+.modal {
+  position: fixed; inset: 0; background: rgba(14, 14, 16, .62); display: flex; align-items: center; justify-content: center; z-index: 20;
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+}
+.modal-card { background: var(--surface); max-width: 440px; width: 100%; border: 1px solid var(--line) }
+.modal-card .band { background: var(--accent); color: var(--on-accent); padding: 26px 24px 22px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px }
+.modal-card .band .rings { width: 52px; height: 34px; color: var(--champagne) }
+.modal-card .band h2 { font-family: "Gowun Batang", var(--display); font-weight: 400; margin: 0; font-size: 21px; line-height: 1.4; text-wrap: balance }
+:lang(en) .modal-card .band h2 { font-family: var(--display); font-weight: 500; font-size: 25px }
+.modal-card .body { padding: 20px 24px; font-size: 14px }
+.modal-card .body p.lead { margin: 0 }
+.modal-card .body ul { padding-left: 18px; margin: 10px 0 0; color: var(--muted) }
+.modal-card .body li { margin-bottom: 4px }
+.modal-card .foot { display: flex; border-top: 1px solid var(--line) }
+.modal-card .foot button { flex: 1; background: none; border: none; padding: 14px; cursor: pointer; font-size: 13px; color: var(--muted) }
+.modal-card .foot button + button { border-left: 1px solid var(--line); color: var(--accent); font-weight: 500 }
+
+/* rounded corners — large for panels and the popup, small for controls */
+.modal-card, .ticket, .done-box, .opt { border-radius: var(--radius) }
+.modal-card { overflow: hidden; box-shadow: 0 24px 60px rgba(14, 14, 16, .28) }
+.pop-cons, .chosen, .date, .btn { border-radius: var(--radius-sm) }
+.lang button { border-radius: 999px }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important } }
